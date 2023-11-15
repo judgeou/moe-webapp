@@ -3,10 +3,7 @@ package com.moe.webapp
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.webkit.WebResourceRequest
-import android.webkit.WebResourceResponse
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import cz.msebera.android.httpclient.client.methods.HttpGet
@@ -102,6 +99,11 @@ class MainActivity : AppCompatActivity() {
                         .show()
                     return true
                 }
+            }
+
+            override fun onReceivedError(view: WebView?, request: WebResourceRequest?, error: WebResourceError?) {
+                super.onReceivedError(view, request, error)
+                view?.loadUrl("https://www.acg.lc")
             }
         }
 
